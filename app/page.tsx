@@ -18,12 +18,15 @@ export default function HomePage() {
   const y2 = useTransform(scrollY, [0, 300], [0, -100])
 
   useEffect(() => {
+  if (typeof window !== "undefined") {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50)
     }
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+  }
+}, [])
+
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-orange-50">
