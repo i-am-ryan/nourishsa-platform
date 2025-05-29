@@ -1,19 +1,42 @@
 "use client";
+export const dynamic = "force-dynamic";
 
 import React from "react";
-import dynamic from "next/dynamic";
+import NextDynamic from "next/dynamic";
 
-// Direct imports (safe)
-import SmartBundleBuilder from "@/components/SmartBundleBuilder";
-import BudgetMealPlanner from "@/components/BudgetMealPlanner";
-import Leaderboard from "@/components/Leaderboard";
-
-// Dynamic imports (to avoid window-related SSR errors)
-const GamificationTracker = dynamic(() => import("@/components/GamificationTracker"), { ssr: false });
-const SkillTrainer = dynamic(() => import("@/components/SkillTrainer"), { ssr: false });
-const MockNFTBadgeCabinet = dynamic(() => import("@/components/MockNFTBadgeCabinet"), { ssr: false });
-const ImpactMap = dynamic(() => import("@/components/ImpactMap"), { ssr: false });
-const BlockchainTraceability = dynamic(() => import("@/components/BlockchainTraceability"), { ssr: false });
+// All dashboard widgets dynamically imported (client‐only)
+const SmartBundleBuilder = NextDynamic(
+  () => import("@/components/SmartBundleBuilder"),
+  { ssr: false }
+);
+const BudgetMealPlanner = NextDynamic(
+  () => import("@/components/BudgetMealPlanner"),
+  { ssr: false }
+);
+const GamificationTracker = NextDynamic(
+  () => import("@/components/GamificationTracker"),
+  { ssr: false }
+);
+const Leaderboard = NextDynamic(
+  () => import("@/components/Leaderboard"),
+  { ssr: false }
+);
+const BlockchainTraceability = NextDynamic(
+  () => import("@/components/BlockchainTraceability"),
+  { ssr: false }
+);
+const ImpactMap = NextDynamic(
+  () => import("@/components/ImpactMap"),
+  { ssr: false }
+);
+const SkillTrainer = NextDynamic(
+  () => import("@/components/SkillTrainer"),
+  { ssr: false }
+);
+const MockNFTBadgeCabinet = NextDynamic(
+  () => import("@/components/MockNFTBadgeCabinet"),
+  { ssr: false }
+);
 
 export default function DashboardPage() {
   return (
