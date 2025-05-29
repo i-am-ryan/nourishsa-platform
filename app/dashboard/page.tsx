@@ -1,14 +1,19 @@
 "use client";
 
 import React from "react";
+import dynamic from "next/dynamic";
+
+// Direct imports (safe)
 import SmartBundleBuilder from "@/components/SmartBundleBuilder";
 import BudgetMealPlanner from "@/components/BudgetMealPlanner";
-import SkillTrainer from "@/components/SkillTrainer";
-import MockNFTBadgeCabinet from "@/components/MockNFTBadgeCabinet";
-import ImpactMap from "@/components/ImpactMap";
-import BlockchainTraceability from "@/components/BlockchainTraceability";
-import GamificationTracker from "@/components/GamificationTracker";
 import Leaderboard from "@/components/Leaderboard";
+
+// Dynamic imports (to avoid window-related SSR errors)
+const GamificationTracker = dynamic(() => import("@/components/GamificationTracker"), { ssr: false });
+const SkillTrainer = dynamic(() => import("@/components/SkillTrainer"), { ssr: false });
+const MockNFTBadgeCabinet = dynamic(() => import("@/components/MockNFTBadgeCabinet"), { ssr: false });
+const ImpactMap = dynamic(() => import("@/components/ImpactMap"), { ssr: false });
+const BlockchainTraceability = dynamic(() => import("@/components/BlockchainTraceability"), { ssr: false });
 
 export default function DashboardPage() {
   return (
